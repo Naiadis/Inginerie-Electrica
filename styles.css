@@ -41,23 +41,64 @@ main {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  position: relative;
+  min-height: 95vh;
+  display: flex;
   align-items: center;
+  padding: 4rem 3rem;
   margin-bottom: 4rem;
+  border-radius: 24px;
+  overflow: hidden;
 }
 
-.hero img {
-  width: 100%;
-  border-radius: 16px;
+.hero-copy {
+  max-width: 520px;
+  position: relative;
+  z-index: 1;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
 }
 
-.badge {
+.hero-art {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+      35deg,
+      #1e1b4b,
+      #1e1b4b 60px,
+      #312e81 60px,
+      #312e81 120px
+    ),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1), transparent 45%);
+  color: #cbd5f5;
+  font-size: 2rem;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  color: #6366f1;
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-placeholder {
+  width: 100%;
+  min-height: 240px;
+  border-radius: 16px;
+  background: repeating-linear-gradient(
+      -45deg,
+      #e0e7ff,
+      #e0e7ff 20px,
+      #c7d2fe 20px,
+      #c7d2fe 40px
+    )
+    #cbd5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475467;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .cta {
@@ -77,6 +118,99 @@ main {
   gap: 2rem;
 }
 
+.scroll-fade-section {
+  margin: 4rem 0 5rem;
+  min-height: 300vh;
+  padding: 4rem 0;
+  background: #05060a;
+  border-radius: 24px;
+}
+
+.scroll-fade-section .scroll-text-item h2 {
+  color: #f8fafc;
+}
+
+.scroll-fade-section .scroll-text-item p {
+  color: #cbd5e1;
+}
+
+.scroll-fade-section .panel-tag {
+  color: #94a3b8;
+}
+
+.scroll-fade-container {
+  position: sticky;
+  top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.scroll-fade-text {
+  position: relative;
+}
+
+.scroll-text-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+}
+
+.scroll-text-item:first-child,
+.scroll-text-item.active {
+  opacity: 1;
+  position: relative;
+}
+
+.scroll-text-item h2 {
+  font-size: 2rem;
+  margin: 0.4rem 0 0.8rem;
+  color: #0f172a;
+}
+
+.panel-tag {
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.scroll-fade-images {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+}
+
+.scroll-image-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-image-item:first-child {
+  opacity: 1;
+}
+
+.scroll-image-item .img-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
 .product {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -92,16 +226,21 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.product img {
-  width: 100%;
-  border-radius: 16px;
-}
-
 .tag {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.1rem;
   color: #94a3b8;
+}
+
+.specs {
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  color: #475467;
+}
+
+.specs li {
+  margin-bottom: 0.35rem;
 }
 
 .price {
@@ -163,6 +302,10 @@ main.detail {
   margin-bottom: 2.5rem;
 }
 
+.detail-hero .img-placeholder {
+  min-height: 300px;
+}
+
 .highlight {
   background: #fff;
   padding: 1.5rem 2rem;
@@ -176,6 +319,15 @@ main.detail {
 }
 
 @media (max-width: 640px) {
+  .hero {
+    padding: 3rem 1.5rem;
+    min-height: 80vh;
+  }
+
+  .hero-copy {
+    padding: 1.5rem;
+  }
+
   .top {
     flex-direction: column;
     gap: 0.75rem;
@@ -184,5 +336,18 @@ main.detail {
   .contact {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .scroll-fade-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .scroll-fade-images {
+    min-height: 300px;
+  }
+
+  .scroll-image-item .img-placeholder {
+    min-height: 300px;
   }
 }
