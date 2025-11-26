@@ -66,12 +66,6 @@ body {
   border-radius: 18px;
 }
 
-/* .cta {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-} */
-
 /* Secțiunea de produse este un grid cu două coloane egale */
 .product-columns {
   display: grid;
@@ -81,13 +75,22 @@ body {
   margin: 0 auto;
 }
 
-/* Coloană stângă: imaginile rămân “lipite” de viewport pentru efectul de carusel */
+/* Coloană stângă: imaginile rămân “lipite” de viewport (nu se deplasează la scroll)
+   și doar opacitatea lor se schimbă; astfel, pare că se derulează un slideshow. */
 .product-images {
   position: sticky;
   top: 150px;
   height: 60vh;
 }
 
+/* Imaginile din interiorul coloanei ocupă spațiul disponibil fără să fie tăiate ciudat */
+.product-images img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Fiecare .product-image este un “cadru” în care punem poza
+   -> toate cadrele sunt puse exact unele peste altele și schimbăm doar opacitatea lor */
 .product-image {
   position: absolute;
   inset: 0;
@@ -202,6 +205,167 @@ body {
   align-self: flex-start;
   box-shadow: 0 0 25px rgba(250, 204, 21, 0.55),
     0 0 45px rgba(250, 204, 21, 0.45);
+}
+
+/* Buton decorativ cu efect de „tensiune electrică” din secțiunea hero */
+.voltage-button {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.voltage-button button,
+.voltage-button a {
+  color: #ffffff;
+  background: #0d1127;
+  padding: 0.9rem 2.8rem;
+  border-radius: 999px;
+  border: 3px solid #facc15;
+  font-size: 1rem;
+  line-height: 1em;
+  letter-spacing: 0.075em;
+  transition: background 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.voltage-button button:hover,
+.voltage-button a:hover {
+  cursor: pointer;
+  background: #0f1c53;
+}
+
+.voltage-button button:hover + svg,
+.voltage-button a:hover + svg,
+.voltage-button button:hover + svg + .dots,
+.voltage-button a:hover + svg + .dots {
+  opacity: 1;
+}
+
+.voltage-button svg {
+  display: block;
+  position: absolute;
+  top: -0.75em;
+  left: -0.25em;
+  width: 75%;
+  height: calc(100% + 1.5em);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  transition-delay: 0.1s;
+}
+
+.voltage-button svg path {
+  stroke-dasharray: 100;
+  filter: url("#glow");
+}
+
+.voltage-button svg path.line-1 {
+  stroke: #f6de8d;
+  stroke-dashoffset: 0;
+  animation: spark-1 3s linear infinite;
+}
+
+.voltage-button svg path.line-2 {
+  stroke: #6bfeff;
+  stroke-dashoffset: 500;
+  animation: spark-2 3s linear infinite;
+}
+
+.voltage-button .dots {
+  opacity: 0;
+  transition: opacity 0.3s;
+  transition-delay: 0.4s;
+}
+
+.voltage-button .dots .dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  background: #ffffff;
+  border-radius: 100%;
+  position: absolute;
+  opacity: 0;
+}
+
+.voltage-button .dots .dot-1 {
+  top: 0;
+  left: 20%;
+  animation: fly-up 3s linear infinite;
+}
+
+.voltage-button .dots .dot-2 {
+  top: 0;
+  left: 55%;
+  animation: fly-up 3s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.voltage-button .dots .dot-3 {
+  top: 0;
+  left: 80%;
+  animation: fly-up 3s linear infinite;
+  animation-delay: 1s;
+}
+
+.voltage-button .dots .dot-4 {
+  bottom: 0;
+  left: 30%;
+  animation: fly-down 3s linear infinite;
+  animation-delay: 2.5s;
+}
+
+.voltage-button .dots .dot-5 {
+  bottom: 0;
+  left: 65%;
+  animation: fly-down 3s linear infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes spark-1 {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes spark-2 {
+  to {
+    stroke-dashoffset: -500;
+  }
+}
+
+@keyframes fly-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.2);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(-1.5rem) scale(0.4);
+  }
+
+  10%,
+  100% {
+    opacity: 0;
+    transform: translateY(-3rem) scale(0.2);
+  }
+}
+
+@keyframes fly-down {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.2);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(1.5rem) scale(0.4);
+  }
+
+  10%,
+  100% {
+    opacity: 0;
+    transform: translateY(3rem) scale(0.2);
+  }
 }
 
 /* Secțiunea de contact are fundal portocaliu și elementele la distanță */
