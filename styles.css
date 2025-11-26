@@ -1,24 +1,28 @@
+/* Variabile globale: font implicit și culori de bază pentru întreg site-ul */
 :root {
   font-family: "Inter", "Segoe UI", system-ui, sans-serif;
   color: #0f172a;
   background-color: #f5f6fb;
 }
 
+/* Toate elementele folosesc același mod de calcul pentru margini/padding */
 * {
   box-sizing: border-box;
 }
 
+/* Fundal general al paginii și reset de margine */
 body {
   margin: 0;
-  background: #f5f6fb;
+  background: #131a39;
 }
 
+/* Bara de sus: poziționează logo-ul și meniul pe o linie */
 .top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 3rem;
-  background: #0f172a;
+  padding: 1.25rem 3.5rem;
+  background: #f59e0b;
   color: #fff;
 }
 
@@ -34,102 +38,54 @@ body {
   letter-spacing: 0.08rem;
 }
 
-main.page-flow {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.page-section {
-  scroll-margin-top: 90px;
-}
-
+/* Secțiunea hero primește spațiu în jurul imaginii */
 .hero {
-  padding: clamp(1.5rem, 4vw, 4rem);
+  padding: 2.5rem 1.5rem;
 }
 
+/* Containerul cu imaginea mare: ocupă lățimea maximă și ține textul centrat vertical */
 .hero-art {
-  max-width: 1200px;
-  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  border-radius: 24px;
-  background: repeating-linear-gradient(
-      35deg,
-      #1e1b4b,
-      #1e1b4b 60px,
-      #312e81 60px,
-      #312e81 120px
-    ),
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(255, 255, 255, 0.1),
-      transparent 45%
-    );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: clamp(3rem, 12vw, 8rem);
-}
-
-.hero-copy {
-  max-width: 520px;
-  color: #0f172a;
-  background: rgba(255, 255, 255, 0.9);
-  padding: clamp(1.5rem, 4vw, 2.5rem);
   border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
-  text-align: center;
-}
-
-.img-placeholder {
-  width: 100%;
-  min-height: 240px;
-  border-radius: 16px;
-  background: repeating-linear-gradient(
-      -45deg,
-      #e0e7ff,
-      #e0e7ff 20px,
-      #c7d2fe 20px,
-      #c7d2fe 40px
-    )
-    #cbd5f5;
+  background-image: url("images/hero.jpeg");
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #475467;
-  font-weight: 600;
-  text-transform: uppercase;
+  padding: 4rem;
 }
 
-.cta {
+/* Cutiuța cu text din hero: fundal translucid pentru lizibilitate pe orice imagine */
+.hero-copy {
+  max-width: 420px;
+  color: #fff;
+  background: rgba(4, 7, 19, 0.55);
+  padding: 1.5rem 2rem;
+  border-radius: 18px;
+}
+
+/* .cta {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: #6366f1;
-  color: #fff;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-}
+} */
 
-.product-showcase {
-  padding: 0;
-}
-
+/* Secțiunea de produse este un grid cu două coloane egale */
 .product-columns {
   display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.2fr);
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  align-items: flex-start;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  width: min(1200px, 100%);
+  margin: 0 auto;
 }
 
+/* Coloană stângă: imaginile rămân “lipite” de viewport pentru efectul de carusel */
 .product-images {
   position: sticky;
-  top: 110px;
+  top: 150px;
   height: 60vh;
-  min-height: 320px;
-  border-radius: 28px;
-  overflow: hidden;
 }
 
 .product-image {
@@ -147,51 +103,72 @@ main.page-flow {
   opacity: 1;
 }
 
+/* Coloană dreaptă: lista verticală de carduri text */
 .product-details {
   display: flex;
   flex-direction: column;
-  gap: clamp(1rem, 5vw, 2.5rem);
+  /* gap: 2rem; */
+  padding-left: 2rem;
 }
 
+/* Fiecare card are înălțime mare pentru a ocupa ecranul și pentru a porni animația de fade */
 .product-card {
-  min-height: 80vh;
-  padding: clamp(1.75rem, 4vw, 2.5rem);
-  background: #f5f6fb;
+  min-height: 75vh;
+  max-width: 480px;
+  margin: 0 auto;
   border-radius: 20px;
-  opacity: 0.2;
-  transition: opacity 0.6s ease;
+  opacity: 0.25;
+  transition: opacity 0.4s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
-  box-shadow: none;
+  /* text-align: center; */
+  color: #fdfdfd;
+}
+
+.product-card h2,
+.product-card h3 {
+  color: #ffffff;
 }
 
 .product-card.active {
   opacity: 1;
 }
 
+/* Clase comune pentru imagini mari: nu tăiem produsul și păstrăm colțurile rotunjite */
+.product-photo,
+.detail-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+  display: block;
+  padding: 0.5rem;
+}
+
 .tag {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.1rem;
-  color: #94a3b8;
+  color: #eaedf2;
 }
 
 .specs {
   margin: 0.75rem 0 0;
   padding-left: 1.1rem;
-  color: #475467;
+  color: #eaeefb;
 }
 
 .specs li {
   margin-bottom: 0.35rem;
 }
 
+/* Prețul este evidențiat cu galben electric */
 .price {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #16a34a;
+  color: #facc15;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.45);
 }
 
 .meta {
@@ -201,69 +178,103 @@ main.page-flow {
   margin: 0.75rem 0;
 }
 
+/* Buton fantomă pentru link-ul de detalii */
 .ghost {
   display: inline-block;
   padding: 0.5rem 1.25rem;
   border-radius: 999px;
-  border: 1px solid #c7d2fe;
-  color: #4f46e5;
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  color: #facc15;
   text-decoration: none;
   font-weight: 600;
 }
 
 .buy-btn {
   margin-top: 0.5rem;
-  padding: 0.8rem 1.5rem;
+  padding: 0.45rem 1.15rem;
   border: none;
   border-radius: 12px;
-  background: #0ea5e9;
-  color: #fff;
-  font-size: 1rem;
+  background: linear-gradient(120deg, #facc15, #f59e0b);
+  color: #0b0f1f;
+  font-size: 0.88rem;
   cursor: pointer;
+  font-weight: 600;
+  align-self: flex-start;
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.55),
+    0 0 45px rgba(250, 204, 21, 0.45);
 }
 
+/* Secțiunea de contact are fundal portocaliu și elementele la distanță */
 .contact {
   margin-top: 0;
-  background: #0f172a;
+  background: #f59e0b;
   color: #fff;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-footer {
-  text-align: center;
-  padding: 2rem;
-  color: #475467;
-}
-
+/* Pagini de detaliu: limităm lățimea și adăugăm spațiu interior */
 main.detail {
-  max-width: 960px;
+  width: min(1000px, 92%);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3.5rem;
 }
 
+/* Hero-ul de detaliu este o grilă adaptivă: text și imagine unul lângă altul */
 .detail-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f7f8ff;
+}
+
+/* Imaginea din pagina de detaliu primește un fundal discret și colțuri rotunde */
+.detail-photo {
+  width: 100%;
+  max-width: 380px;
+  justify-self: center;
+  border-radius: 20px;
+  background: rgba(6, 11, 30, 0.25);
+  padding: 1rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
   margin-bottom: 2.5rem;
 }
 
-.detail-hero .img-placeholder {
-  min-height: 300px;
-}
-
-.highlight {
-  background: #fff;
-  padding: 1.5rem 2rem;
+/* Carduri cu text explicativ: fundal translucid și colțuri rotunjite */
+.detail-card {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1.25rem;
   border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
-  margin-bottom: 2rem;
+  color: #f3f5ff;
 }
 
-.highlight ul {
-  margin-left: 1.25rem;
+/* Butonul înapoi la catalog: stil simplu cu margine galbenă */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  color: #facc15;
+  text-decoration: none;
+  font-weight: 600;
+  background: transparent;
 }
 
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .hero {
     padding: 3rem 1.5rem;
     min-height: 80vh;
@@ -295,4 +306,8 @@ main.detail {
   .product-details {
     min-height: auto;
   }
-}
+
+  .product-card {
+    max-width: none;
+  }
+} */

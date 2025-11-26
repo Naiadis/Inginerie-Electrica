@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Bara superioară vizibilă pe toate paginile: logo + legături rapide -->
     <header class="top">
       <div class="brand">ElectroLab Market</div>
       <nav>
@@ -16,7 +17,9 @@
       </nav>
     </header>
 
+    <!-- Main conține cele 3 blocuri: hero, produse, contact -->
     <main class="page-flow">
+      <!-- Secțiune hero: imagine pe tot ecranul + mesaj introductiv -->
       <section id="acasa" class="page-section hero">
         <div class="hero-art">
           <div class="hero-copy">
@@ -26,49 +29,95 @@
               integrate rapid în panouri, bancuri de lucru sau aplicații
               industriale.
             </p>
-            <a class="cta" href="#produse">Vezi catalogul</a>
           </div>
         </div>
       </section>
 
+      <!-- Secțiune produse: coloana stângă conține imaginile fixate, coloana dreaptă textul -->
       <section id="produse" class="page-section product-showcase">
         <div class="product-columns">
+          <!-- Imaginile sunt poziționate una peste alta și doar opacitatea se schimbă la scroll -->
           <div class="product-images" aria-hidden="true">
             <div class="product-image active" data-product="0">
-              <div class="img-placeholder">Ampermetru</div>
+              <img
+                src="images/ampermetru.png"
+                alt="Ampermetru analogic"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="1">
-              <div class="img-placeholder">Voltmetru</div>
+              <img
+                src="images/voltmetru.png"
+                alt="Voltmetru industrial"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="2">
-              <div class="img-placeholder">Wattmetru</div>
+              <img
+                src="images/wattmetru.png"
+                alt="Wattmetru multifuncțional"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="3">
-              <div class="img-placeholder">Tablouri</div>
+              <img
+                src="images/panou%20electric.jpeg"
+                alt="Tablou electric ABS"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="4">
-              <div class="img-placeholder">Clești</div>
+              <img
+                src="images/clesti%20ampermetrici.png"
+                alt="Clești ampermetrici Peaktech"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="5">
-              <div class="img-placeholder">Siguranțe</div>
+              <img
+                src="images/sigurante.png"
+                alt="Siguranțe fuzibile"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="6">
-              <div class="img-placeholder">Disjunctor</div>
+              <img
+                src="images/dijunctoare.png"
+                alt="Disjunctoare automate"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="7">
-              <div class="img-placeholder">Generator</div>
+              <img
+                src="images/generator%20de%20semnal.png"
+                alt="Generator de semnal OWON"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="8">
-              <div class="img-placeholder">Sursă DC</div>
+              <img
+                src="images/sursa%20DC.png"
+                alt="Sursă reglabilă DC"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="9">
-              <div class="img-placeholder">Motor</div>
+              <img
+                src="images/motor%20electric.png"
+                alt="Motor electric trifazat"
+                class="product-photo"
+              />
             </div>
             <div class="product-image" data-product="10">
-              <div class="img-placeholder">VFD</div>
+              <img
+                src="images/convertizor.png"
+                alt="Convertizor de frecvență"
+                class="product-photo"
+              />
             </div>
           </div>
 
+          <!-- Fiecare bloc de text folosește atributul data-product pentru a se sincroniza cu imaginea -->
           <div class="product-details">
             <article class="product-card" data-product="0">
               <p class="tag">Aparate de măsură</p>
@@ -121,6 +170,7 @@
               </button>
             </article>
 
+            <!-- Produsele fără pagină dedicată folosesc aceeași structură pentru consistență -->
             <article class="product-card" data-product="2">
               <p class="tag">Aparate de măsură</p>
               <h3>Wattmetru multifuncțional</h3>
@@ -248,6 +298,7 @@
         </div>
       </section>
 
+      <!-- Secțiunea de contact: nume + grupă -->
       <section class="page-section contact" id="contact">
         <div>
           <h2>Contact proiect</h2>
@@ -257,10 +308,7 @@
       </section>
     </main>
 
-    <footer>
-      <small>&copy; 2025 ElectroLab Market</small>
-    </footer>
-
+    <!-- Link-ul cu fila JavaScript: sincronizează imaginile cu textul și tratează click-urile -->
     <script src="script.js"></script>
   </body>
 </html>

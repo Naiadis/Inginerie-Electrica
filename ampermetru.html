@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Același header ca pe pagina principală pentru navigare rapidă -->
     <header class="top">
       <div class="brand">ElectroLab Market</div>
       <nav>
@@ -16,43 +17,59 @@
       </nav>
     </header>
 
+    <!-- Conținutul paginii de detaliu este structurat în 3 blocuri: prezentare, specificații, buton -->
     <main class="detail">
+      <!-- Hero-ul conține povestea produsului și imaginea dedicată -->
       <section class="hero detail-hero">
         <div>
           <p class="tag">Aparate de măsură</p>
           <h1>Ampermetru analogic de panou</h1>
           <p>
-            Modelul 30A AC este proiectat pentru măsurarea curentului alternativ în echipamente
-            electrice, tablouri de distribuție sau panouri de control și se montează rapid cu șuruburi.
+            Modelul 30A AC este proiectat pentru măsurarea curentului alternativ
+            în echipamente electrice, tablouri de distribuție sau panouri de
+            control și se montează rapid cu șuruburi.
           </p>
           <div class="meta">
             <span class="price">102,11 Lei</span>
-            <a class="ghost" href="voltmetru.html">Vezi voltmetrul</a>
           </div>
           <button class="buy-btn" data-product="Ampermetru analogic de panou">
             Cumpără
           </button>
         </div>
-        <div class="img-placeholder" aria-hidden="true">Imagine produs</div>
+        <img
+          src="images/ampermetru.png"
+          alt="Ampermetru analogic de panou"
+          class="detail-photo"
+        />
       </section>
 
-      <section class="highlight">
-        <h2>Proprietăți cheie</h2>
-        <ul>
-          <li>Domeniu măsură 0–30A AC, acuratețe ±1.5%.</li>
-          <li>Temperatură de operare -25°C ~ +50°C, dimensiuni 63 x 55 x 60 mm.</li>
-          <li>Montaj pe panou cu șuruburi, necesită shunt extern (neinclus).</li>
-        </ul>
+      <!-- Grilă cu informații practice: listă tehnică și recomandări de utilizare -->
+      <section class="detail-grid">
+        <article class="detail-card">
+          <h2>Proprietăți cheie</h2>
+          <ul>
+            <li>Domeniu măsură 0–30A AC, acuratețe ±1.5%.</li>
+            <li>
+              Temperatură de operare -25°C ~ +50°C, dimensiuni 63 x 55 x 60 mm.
+            </li>
+            <li>
+              Montaj pe panou cu șuruburi, necesită shunt extern (neinclus).
+            </li>
+          </ul>
+        </article>
+
+        <article class="detail-card">
+          <h2>Utilizare</h2>
+          <p>
+            Se montează în serie cu componenta analizată, iar pentru precizie
+            optimă se verifică plaja de măsură și se calibrează periodic.
+            Shuntul extern se conectează conform documentației echipamentului.
+          </p>
+        </article>
       </section>
 
-      <section class="highlight">
-        <h2>Utilizare</h2>
-        <p>
-          Se montează în serie cu componenta analizată, iar pentru precizie optimă se verifică
-          plaja de măsură și se calibrează periodic. Shuntul extern se conectează conform
-          documentației echipamentului.
-        </p>
-      </section>
+      <!-- Legătură simplă pentru a reveni la lista de produse -->
+      <a class="back-btn" href="index.html">Înapoi la catalog</a>
     </main>
 
     <footer>

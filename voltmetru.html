@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Headerul rămâne identic pentru a simți continuitate între pagini -->
     <header class="top">
       <div class="brand">ElectroLab Market</div>
       <nav>
@@ -16,44 +17,60 @@
       </nav>
     </header>
 
+    <!-- Structura generală a paginii: hero cu imagine + grilă informativă + buton back -->
     <main class="detail">
+      <!-- Hero-ul reia descrierea scurtă a produsului și afișează fotografia -->
       <section class="hero detail-hero">
         <div>
           <p class="tag">Aparate de măsură</p>
           <h1>Voltmetru industrial</h1>
           <p>
-            Afișează rapid tendința tensiunii măsurate și se folosește în întreprinderi industriale
-            și miniere, metalurgie, chimie, energie electrică sau echipamente de control.
+            Afișează rapid tendința tensiunii măsurate și se folosește în
+            întreprinderi industriale și miniere, metalurgie, chimie, energie
+            electrică sau echipamente de control.
           </p>
           <div class="meta">
             <span class="price">96,43 Lei</span>
-            <a class="ghost" href="ampermetru.html">Vezi ampermetrul</a>
           </div>
           <button class="buy-btn" data-product="Voltmetru industrial">
             Cumpără
           </button>
         </div>
-        <div class="img-placeholder" aria-hidden="true">Imagine produs</div>
+        <img
+          src="images/voltmetru.png"
+          alt="Voltmetru industrial"
+          class="detail-photo"
+        />
       </section>
 
-      <section class="highlight">
-        <h2>Proprietăți cheie</h2>
-        <ul>
-          <li>Stabilitate bună și precizie ridicată pentru măsurători repetate.</li>
-          <li>Domeniu larg de măsurare: AC 0 ~ 500V.</li>
-          <li>Formă compactă, ușoară și instalare convenabilă.</li>
-          <li>Utilizare facilă în diverse dispozitive de control electronic.</li>
-        </ul>
+      <!-- Grilă cu 2 carduri: unul tehnic, unul despre utilizare practică -->
+      <section class="detail-grid">
+        <article class="detail-card">
+          <h2>Proprietăți cheie</h2>
+          <ul>
+            <li>
+              Stabilitate bună și precizie ridicată pentru măsurători repetate.
+            </li>
+            <li>Domeniu larg de măsurare: AC 0 ~ 500V.</li>
+            <li>Formă compactă, ușoară și instalare convenabilă.</li>
+            <li>
+              Utilizare facilă în diverse dispozitive de control electronic.
+            </li>
+          </ul>
+        </article>
+
+        <article class="detail-card">
+          <h2>Instrucțiuni</h2>
+          <p>
+            Se conectează în paralel cu circuitul analizat, iar datorită formei
+            compacte poate fi montat direct în panouri de automatizare. Verifică
+            întotdeauna domeniul de tensiune acceptat înainte de utilizare.
+          </p>
+        </article>
       </section>
 
-      <section class="highlight">
-        <h2>Instrucțiuni</h2>
-        <p>
-          Se conectează în paralel cu circuitul analizat, iar datorită formei compacte poate fi montat
-          direct în panouri de automatizare. Verifică întotdeauna domeniul de tensiune acceptat înainte
-          de utilizare.
-        </p>
-      </section>
+      <!-- Buton de întoarcere pentru ca utilizatorul să revină în catalog -->
+      <a class="back-btn" href="index.html">Înapoi la catalog</a>
     </main>
 
     <footer>

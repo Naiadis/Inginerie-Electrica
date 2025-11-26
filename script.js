@@ -1,20 +1,13 @@
-const buttons = document.querySelectorAll(".buy-btn");
-
-buttons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const produs = btn.dataset.product || "produsul selectat";
-    alert(
-      `${produs} a fost adăugat în lista de dorințe. Checkout disponibil în curând.`
-    );
-  });
-});
-
+// -------------------------------------------------------------
+// Carusel la scroll: sincronizează cardurile text cu imaginile
+// -------------------------------------------------------------
 const productCards = document.querySelectorAll(".product-card");
 const productImages = document.querySelectorAll(".product-image");
 
 if (productCards.length && productImages.length) {
   let activeIndex = 0;
 
+  // Marchează produsul care este în centrul ecranului
   const setActiveProduct = (index) => {
     productCards.forEach((card, i) =>
       card.classList.toggle("active", i === index)
@@ -25,6 +18,7 @@ if (productCards.length && productImages.length) {
     activeIndex = index;
   };
 
+  // Face textul mai transparent când cardul părăsește centrul
   const updateOpacity = () => {
     const viewportHeight = window.innerHeight;
 
@@ -35,11 +29,13 @@ if (productCards.length && productImages.length) {
 
       let opacity;
       if (index === activeIndex) {
+        // Cardul activ rămâne vizibil mai mult timp
         const plateau = viewportHeight * 0.2;
         const falloff = viewportHeight * 0.6;
         const adjusted = Math.max(0, distanceFromCenter - plateau);
         opacity = Math.max(0, 1 - adjusted / falloff);
       } else {
+        // Cardurile din apropiere apar gradual pentru efect fluid
         const earlyFade = viewportHeight * 0.5;
         opacity = Math.max(
           0,
@@ -54,6 +50,7 @@ if (productCards.length && productImages.length) {
   setActiveProduct(0);
   updateOpacity();
 
+  // IntersectionObserver detectează când un card intră în zona vizibilă
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -70,6 +67,7 @@ if (productCards.length && productImages.length) {
     }
   );
 
+  // Ajustează și vizibilitatea imaginilor pentru a imita un slideshow
   const syncImageOpacity = () => {
     const viewportHeight = window.innerHeight;
     const centerY = viewportHeight / 2;
@@ -93,42 +91,4 @@ if (productCards.length && productImages.length) {
     syncImageOpacity();
   });
   syncImageOpacity();
-}
-
-// Scroll-based image crossfade effect
-const scrollTextItems = document.querySelectorAll(".scroll-text-item");
-const scrollImageItems = document.querySelectorAll(".scroll-image-item");
-
-if (scrollTextItems.length && scrollImageItems.length) {
-  const clampIndex = (idx) =>
-    Math.max(0, Math.min(idx, scrollImageItems.length - 1));
-
-  const setActiveSlide = (index) => {
-    const safeIndex = clampIndex(index);
-    scrollTextItems.forEach((item, i) => {
-      item.classList.toggle("active", i === safeIndex);
-    });
-    scrollImageItems.forEach((img, i) => {
-      img.classList.toggle("active", i === safeIndex);
-    });
-  };
-
-  setActiveSlide(0);
-
-  const textObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const idx = Number(entry.target.dataset.textIndex || 0);
-          setActiveSlide(idx);
-        }
-      });
-    },
-    {
-      root: null,
-      threshold: 0.6,
-    }
-  );
-
-  scrollTextItems.forEach((item) => textObserver.observe(item));
 }
